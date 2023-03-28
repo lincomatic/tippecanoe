@@ -282,7 +282,7 @@ void mbtiles_write_metadata(sqlite3 *outdb, const char *outdir, const char *fnam
 		}
 	}
 
-	sql = sqlite3_mprintf("INSERT INTO metadata (name, value) VALUES ('name', %Q);", fname);
+	sql = sqlite3_mprintf("INSERT INTO metadata (name, value) VALUES ('name', %Q);", "OpenMapTiles");
 	if (sqlite3_exec(db, sql, NULL, NULL, &err) != SQLITE_OK) {
 		fprintf(stderr, "set name in metadata: %s\n", err);
 		if (!forcetable) {
@@ -300,7 +300,7 @@ void mbtiles_write_metadata(sqlite3 *outdb, const char *outdir, const char *fnam
 	}
 	sqlite3_free(sql);
 
-	sql = sqlite3_mprintf("INSERT INTO metadata (name, value) VALUES ('version', %d);", 2);
+	sql = sqlite3_mprintf("INSERT INTO metadata (name, value) VALUES ('version', %d);", 3);
 	if (sqlite3_exec(db, sql, NULL, NULL, &err) != SQLITE_OK) {
 		fprintf(stderr, "set version : %s\n", err);
 		if (!forcetable) {
